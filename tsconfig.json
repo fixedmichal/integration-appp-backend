@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@synergy-forge/api/categories": ["src/api/categories/src/index.ts"],
+      "@synergy-forge/api/category-items": [
+        "src/api/category-items/src/index.ts"
+      ],
+      "@synergy-forge/api/database": ["src/api/database/src/index.ts"],
+      "@synergy-forge/api/integrations": ["src/api/integrations/src/index.ts"],
+      "@synergy-forge/api/versions": ["src/api/versions/src/index.ts"],
+      "@synergy-forge/api/core": ["src/api/core/src/index.ts"],
+      "@synergy-forge/frontend/core": ["src/frontend/core/src/index.ts"],
+      "@synergy-forge/frontend/integrations": [
+        "src/frontend/integrations/src/index.ts"
+      ],
+      "@synergy-forge/shared/data-access": [
+        "src/shared/data-access/src/index.ts"
+      ]
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}
