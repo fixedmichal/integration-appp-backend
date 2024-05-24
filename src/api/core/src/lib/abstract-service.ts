@@ -1,20 +1,22 @@
-import { HttpException, HttpStatus, Logger } from "@nestjs/common";
-import { DatabaseService } from "@synergy-forge/api/database";
-import { NotFoundError } from "@prisma/client/runtime";
+import { HttpException, HttpStatus, Logger } from '@nestjs/common';
+import { NotFoundError } from '@prisma/client/runtime';
+import { DatabaseService } from './../../../database/src/lib/database.service';
 
 export abstract class AbstractService<T, CreateTDto, UpdateTDto> {
   protected entityName!: string;
 
-  constructor(protected db: DatabaseService) {
-  }
+  constructor(protected db: DatabaseService) {}
 
   async findOne<T>(id: number): Promise<T> {
     try {
       // @ts-ignore
-      return await this.db[this.entityName].findFirst({where: {id}});
+      return await this.db[this.entityName].findFirst({ where: { id } });
     } catch (e: any) {
       this.logError(e);
-      throw new HttpException(`FindOne ${this.entityName} error`, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        `FindOne ${this.entityName} error`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -24,17 +26,23 @@ export abstract class AbstractService<T, CreateTDto, UpdateTDto> {
       return await this.db[this.entityName].findMany();
     } catch (e: any) {
       this.logError(e);
-      throw new HttpException(`FindAll ${this.entityName} error`, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        `FindAll ${this.entityName} error`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   async create(data: CreateTDto): Promise<T> {
     try {
       // @ts-ignore
-      return await this.db[this.entityName].create({data});
+      return await this.db[this.entityName].create({ data });
     } catch (e: any) {
       this.logError(e);
-      throw new HttpException(`Create ${this.entityName} error`, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        `Create ${this.entityName} error`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -42,22 +50,28 @@ export abstract class AbstractService<T, CreateTDto, UpdateTDto> {
     try {
       // @ts-ignore
       return await this.db[this.entityName].update({
-        where: {id},
-        data
-      })
+        where: { id },
+        data,
+      });
     } catch (e: any) {
       this.logError(e);
-      throw new HttpException(`Update ${this.entityName} error`, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        `Update ${this.entityName} error`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   async remove(id: number): Promise<void> {
     try {
       // @ts-ignore
-      return await this.db[this.entityName].delete({where: {id}});
+      return await this.db[this.entityName].delete({ where: { id } });
     } catch (e: any) {
       this.logError(e);
-      throw new HttpException(`Remove ${this.entityName} error`, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        `Remove ${this.entityName} error`,
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 

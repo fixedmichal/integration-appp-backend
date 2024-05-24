@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@synergy-forge/api/database';
-import { IntegrationsModule } from '@synergy-forge/api/integrations';
-import { CategoriesModule } from '@synergy-forge/api/categories';
-import { CategoryItemsModule } from '@synergy-forge/api/category-items';
-import { VersionsModule } from '@synergy-forge/api/versions';
+
+import { DatabaseModule } from './api/database/src/lib/database.module';
+import { CategoriesModule } from './api/categories/src';
+import { CategoryItemsModule } from './api/category-items/src';
+import { IntegrationsModule } from './api/integrations/src';
+import { VersionsModule } from './api/versions/src';
 
 @Module({
   imports: [

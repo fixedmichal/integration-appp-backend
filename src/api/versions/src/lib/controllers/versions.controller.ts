@@ -1,7 +1,7 @@
 import { Controller, Param, Post } from '@nestjs/common';
 import { VersionsService } from '../services/versions.service';
-import { AbstractController } from "@synergy-forge/api/core";
-import { VersionEntity } from "../entities/version.entity";
+import { AbstractController } from './../../../../core/src/lib/abstract-controller';
+import { VersionEntity } from '../entities/version.entity';
 
 @Controller('versions')
 export class VersionsController extends AbstractController<VersionEntity> {
@@ -13,6 +13,4 @@ export class VersionsController extends AbstractController<VersionEntity> {
   duplicate(@Param('id') id: string) {
     return this.service.duplicate(id);
   }
-
 }
-

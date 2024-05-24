@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { VersionsController } from './controllers/versions.controller';
 import { VersionsService } from './services/versions.service';
-import { DatabaseModule } from "@synergy-forge/api/database";
+import { DatabaseModule } from './../../../database/src/lib/database.module';
 
 @Module({
   imports: [DatabaseModule],
@@ -9,5 +9,4 @@ import { DatabaseModule } from "@synergy-forge/api/database";
   providers: [VersionsService],
   exports: [VersionsService],
 })
-export class VersionsModule {
-}
+export class VersionsModule {}

@@ -1,7 +1,7 @@
 {
   "name": "api-database",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/database/src",
+  "sourceRoot": "src/api/database/src",
   "projectType": "library",
   "targets": {
     "lint": {

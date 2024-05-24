@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { IntegrationsController } from './controllers/integrations.controller';
 import { IntegrationsService } from './services/integrations.service';
-import { DatabaseModule } from '@synergy-forge/api/database';
+import { DatabaseModule } from './../../../database/src/lib/database.module';
 
 @Module({
   imports: [DatabaseModule],

@@ -1,11 +1,10 @@
 import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
 import { IntegrationsService } from '../services/integrations.service';
-import { IntegrationEntity } from "../entities/integration.entity";
-import { AbstractController } from "@synergy-forge/api/core";
+import { IntegrationEntity } from '../entities/integration.entity';
+import { AbstractController } from './../../../../core/src/lib/abstract-controller';
 
 @Controller('integrations')
 export class IntegrationsController extends AbstractController<IntegrationEntity> {
-
   constructor(protected override service: IntegrationsService) {
     super(service);
   }
@@ -14,7 +13,7 @@ export class IntegrationsController extends AbstractController<IntegrationEntity
   findFull(@Param('id') id: string) {
     const parsed = Number(id);
     if (isNaN(parsed) || parsed !== parseInt(id)) {
-        return new BadRequestException('Invalid ID, expected type integer');
+      return new BadRequestException('Invalid ID, expected type integer');
     }
 
     return this.service.findFull(parsed);
